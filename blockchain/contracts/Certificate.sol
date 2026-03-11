@@ -7,7 +7,7 @@ contract Certificate {
 
     struct Cert {
         string studentName;
-        string course;
+        string certificateTitle;
         string ipfsHash;
         bool exists;
     }
@@ -23,32 +23,43 @@ contract Certificate {
         _;
     }
 
+    /*
+    -----------------------------------
+    ISSUE CERTIFICATE
+    -----------------------------------
+    */
     function issueCertificate(
         string memory certId,
         string memory studentName,
-        string memory course,
+        string memory certificateTitle,
         string memory ipfsHash
     ) public onlyAdmin {
 
+        require(!certificates[certId].exists, "Certificate already issued");
+
         certificates[certId] = Cert(
             studentName,
-            course,
+            certificateTitle,
             ipfsHash,
             true
         );
     }
 
+    /*
+    -----------------------------------
+    VERIFY CERTIFICATE
+    -----------------------------------
+    */
     function verifyCertificate(string memory certId)
         public
         view
         returns (
-            string memory,
-            string memory,
-            string memory,
-            bool
+            string memory studentName,
+            string memory certificateTitle,
+            string memory ipfsHash,
+            bool exists
         )
     {
-
         Cert memory cert = certificates[certId];
 
         if (!cert.exists) {
@@ -57,7 +68,7 @@ contract Certificate {
 
         return (
             cert.studentName,
-            cert.course,
+            cert.certificateTitle,
             cert.ipfsHash,
             true
         );

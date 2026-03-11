@@ -1,40 +1,56 @@
 import mongoose from "mongoose";
 
 const certificateSchema = new mongoose.Schema({
-  recipientName: {
+
+  certId: {
     type: String,
     required: true,
+    unique: true
   },
 
-  recipientEmail: {
+  studentName: {
     type: String,
-    required: true,
-    lowercase: true,   // 🔥 important for matching
-    trim: true,
+    required: true
   },
 
-  course: {
+  studentEmail: {
     type: String,
-    required: true,
+    required: true
   },
 
-  issuer: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Issuer",
+  credentialType: {
+    type: String
   },
 
-  status: {
-    type: String,
-    enum: ["active", "revoked"],
-    default: "active",
+  issueDate: {
+    type: String
   },
 
-  issuedAt: {
+  expiryDate: {
+    type: String
+  },
+
+  grade: {
+    type: String
+  },
+
+  certificateFile: {
+    type: String
+  },
+
+  ipfsHash: { 
+    type: String 
+  },
+
+  txHash: { 
+    type: String 
+  },
+
+  createdAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
+
 });
 
-const Certificate = mongoose.model("Certificate", certificateSchema);
-
-export default Certificate;
+export default mongoose.model("Certificate", certificateSchema);
