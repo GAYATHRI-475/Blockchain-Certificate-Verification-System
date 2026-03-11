@@ -18,6 +18,10 @@ const certificateSchema = new mongoose.Schema({
     required: true
   },
 
+  department: {
+    type: String
+  },
+
   credentialType: {
     type: String
   },
@@ -36,6 +40,12 @@ const certificateSchema = new mongoose.Schema({
 
   certificateFile: {
     type: String
+  },
+
+  status: {
+    type: String,
+    enum: ["active", "revoked"],
+    default: "active"
   },
 
   ipfsHash: { 

@@ -71,6 +71,7 @@ router.post("/issue", upload.single("certificate"), async (req, res) => {
       certId,
       studentName,
       studentEmail,
+      department,
       credentialType,
       certificateTitle,
       issueDate,
@@ -94,6 +95,7 @@ router.post("/issue", upload.single("certificate"), async (req, res) => {
       certId,
       studentName,
       studentEmail,
+      department,
       credentialType,
       certificateTitle,
       issueDate,
@@ -101,7 +103,8 @@ router.post("/issue", upload.single("certificate"), async (req, res) => {
       grade,
       certificateFile,
       ipfsHash,
-      txHash
+      txHash,
+      status: "active"
     });
 
     await certificate.save();
