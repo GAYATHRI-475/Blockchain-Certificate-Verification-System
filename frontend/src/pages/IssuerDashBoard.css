@@ -1,6 +1,7 @@
 .dashboard-content {
-  padding: 30px;
+  padding-left: 30px;
   color: white;
+  min-height: 100vh;
 }
 
 /* 🔷 Header */
@@ -12,16 +13,6 @@
 .header p {
   color: #aaa;
   margin-bottom: 20px;
-}
-
-/* 🔷 Card */
-.card {
-  background: rgba(124, 58, 237, 0.08);
-  border: 1px solid rgba(124, 58, 237, 0.5);
-  border-radius: 18px;
-  padding: 22px;
-  backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
 }
 
 .did {
@@ -85,40 +76,100 @@
   margin-bottom: 15px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #111;
-  border-radius: 10px;
-  overflow: hidden;
+/* 🔷 Table Container */
+
+.table-container{
+  border-radius:16px;
+  border:1px solid rgba(124,58,237,0.4);
+  backdrop-filter:blur(12px);
+
+  max-height: 450px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
-th,
-td {
-  padding: 12px;
-  text-align: left;
+/* 🔷 Table */
+
+.dark-table{
+  width:100%;
+  border-collapse:collapse;
+  color:white;
+  font-size:14px;
 }
 
-th {
-  background: #222;
+/* 🔷 Header */
+
+.dark-table thead{
+  background:rgba(124,58,237,0.15);
 }
 
-tr:nth-child(even) {
-  background: #1a1a1a;
+.dark-table th{
+  padding:16px;
+  text-align:left;
+  font-weight:600;
+  color:#e5e7eb;
+  border-bottom:1px solid rgba(124,58,237,0.4);
 }
 
-.no-data {
-  text-align: center;
-  color: gray;
+/* 🔷 Rows */
+
+.dark-table td{
+  padding:15px;
 }
 
-/* 🔷 Status Colors */
-.issued {
-  color: lightgreen;
-  font-weight: bold;
+.dark-table tbody tr{
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  transition:all 0.25s ease;
 }
 
-.revoked {
-  color: red;
-  font-weight: bold;
+.dark-table tbody tr:hover{
+  background:rgba(124,58,237,0.12);
+}
+
+/* 🔷 Status */
+
+.status-active{
+  color:#7CFC9A;
+  font-weight:600;
+}
+
+.status-revoked{
+  color:#ff6b6b;
+  font-weight:600;
+}
+
+/* 🔷 Edit Button */
+
+/* 🔷 Edit Button (same style but no hover lift) */
+
+.edit-btn {
+  background: rgba(124, 58, 237, 0.2);
+  border-radius: 16px;
+  padding: 8px 18px;
+  border: 1px solid rgba(124, 58, 237, 0.6);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Optional small glow only (no movement) */
+
+.edit-btn:hover {
+  border: 1px solid rgba(124, 58, 237, 0.9);
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.4);
+}
+
+/* Click effect */
+
+.edit-btn:active {
+  transform: scale(0.96);
+}
+
+/* 🔷 Empty Data */
+
+.no-data{
+  text-align:center;
+  color:#aaa;
 }

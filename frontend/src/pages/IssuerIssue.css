@@ -1,0 +1,170 @@
+.issue-container {
+  padding-left: 30px;
+  color: white;
+}
+
+
+/* Title */
+
+.issue-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.issue-subtitle {
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+
+.wallet-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  border-radius: 18px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.wallet-info h3 {
+  margin: 0 0 4px 0;
+  color: #7c3aed;
+  font-size: 16px;
+}
+
+.wallet-info .did {
+  font-family: monospace;
+  font-weight: 500;
+  color: #4b4b4b;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Frosted-Glass Button */
+.buttons button {
+  background: rgba(124, 58, 237, 0.2);
+  border-radius: 16px;
+  padding: 12px 28px;
+  border: 1px solid rgba(124, 58, 237, 0.6);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  text-align: center;
+}
+
+.buttons button:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+  border: 1px solid rgba(124, 58, 237, 0.8);
+}
+
+.buttons button:active {
+  transform: scale(0.97);
+}
+
+/* Form Card */
+
+.issue-card {
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  border-radius: 18px;
+  padding: 25px;
+  backdrop-filter: blur(12px);
+}
+
+
+/* Form Layout */
+
+.issue-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.required {
+  color: red;
+  margin-left: 3px;
+  font-weight: bold;
+}
+
+/* Labels */
+
+.issue-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+
+/* Inputs */
+
+.issue-form input,
+.issue-form select {
+  width: 90%;          /* reduce width */
+  max-width: 320px;    /* prevent very large inputs */
+  padding: 8px 10px;   /* smaller padding */
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: white;
+  outline: none;
+  font-size: 14px;
+}
+
+.issue-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* File Input */
+
+.file-input {
+  grid-column: span 2;
+}
+
+
+/* Submit Button */
+
+/* Submit Button Container */
+.submit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Frosted-Glass Submit Button (same as Connect Wallet) */
+.submit-container .submit-btn {
+  background: rgba(124, 58, 237, 0.2);
+  border-radius: 16px;
+  padding: 12px 28px;
+  border: 1px solid rgba(124, 58, 237, 0.6);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  text-align: center;
+  justify-content: center;
+
+}
+
+.submit-container .submit-btn:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+  border: 1px solid rgba(124, 58, 237, 0.8);
+
+}
+
+.submit-container .submit-btn:active {
+  transform: scale(0.97);
+}

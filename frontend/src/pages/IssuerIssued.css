@@ -1,0 +1,142 @@
+/* Page */
+body {
+    margin:0;
+}
+.issued-container{
+  padding-left:30px;
+  color:white;
+  
+}
+
+/* Header */
+
+.issued-title{
+  font-size:28px;
+  margin-bottom:5px;
+}
+
+.issued-subtitle{
+  color:#aaa;
+  margin-bottom:20px;
+}
+
+/* HEADER WITH SEARCH */
+
+.issued-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+/* SEARCH BAR */
+
+.search-bar{
+  padding:10px 15px;
+  border-radius:10px;
+  border:1px solid rgba(124,58,237,0.5);
+  background:#111;
+  color:white;
+  width:250px;
+  outline:none;
+}
+
+.search-bar::placeholder{
+  color:#888;
+}
+
+/* Table container */
+
+.table-container{
+  margin-top:20px;
+  border-radius:16px;
+  border:1px solid rgba(124,58,237,0.4);
+  backdrop-filter:blur(12px);
+
+  max-height: 540px;
+  overflow-y:auto;
+  overflow-x:auto;
+}
+
+/* Table */
+
+.dark-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+  color:white;
+}
+
+/* Header */
+
+.dark-table thead{
+  background:rgba(124,58,237,0.15);
+}
+
+.dark-table thead th{
+  position: sticky;
+  top: 0;
+  background: #1d1a3a;
+  z-index: 5;
+  padding:16px;
+  text-align:left;
+  font-weight:600;
+  border-bottom:1px solid rgba(124,58,237,0.4);
+}
+
+/* Rows */
+
+.dark-table td{
+  padding:15px;
+}
+
+.dark-table tbody tr{
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  transition:all 0.25s ease;
+}
+
+.dark-table tbody tr:hover{
+  background:rgba(124,58,237,0.12);
+}
+
+/* Status */
+
+.status-active{
+  color:#7CFC9A;
+  font-weight:600;
+}
+
+.status-revoked{
+  color:#ff6b6b;
+  font-weight:600;
+}
+
+/* Edit button */
+
+.edit-btn{
+  background: rgba(124, 58, 237, 0.2);
+  border-radius: 14px;
+  padding: 6px 16px;
+  border: 1px solid rgba(124, 58, 237, 0.6);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-btn:hover{
+  border: 1px solid rgba(124, 58, 237, 0.9);
+  box-shadow: 0 0 6px rgba(124, 58, 237, 0.4);
+}
+
+.edit-btn:active{
+  transform: scale(0.95);
+}
+
+/* No data */
+
+.no-data{
+  text-align:center;
+  color:#aaa;
+}

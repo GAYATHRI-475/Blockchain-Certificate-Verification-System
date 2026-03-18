@@ -1,16 +1,41 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+// import { StrictMode } from 'react'
+// import { createRoot } from 'react-dom/client'
+// import './index.css'
+// import App from './App.jsx'
 
-import { GoogleOAuthProvider } from '@react-oauth/google';
+// import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const GOOGLE_CLIENT_ID = "271869874540-rge5rj74d98abg22agcadqrhgvos0ejo.apps.googleusercontent.com";
+// const GOOGLE_CLIENT_ID = "271869874540-rge5rj74d98abg22agcadqrhgvos0ejo.apps.googleusercontent.com";
 
-createRoot(document.getElementById('root')).render(
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+//     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+//       <App />
+//     </GoogleOAuthProvider>
+//   </StrictMode>
+// );
+
+
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { AppProvider } from "./context/AppContext";   // ✅ ADD THIS
+
+const GOOGLE_CLIENT_ID =
+  "271869874540-rge5rj74d98abg22agcadqrhgvos0ejo.apps.googleusercontent.com";
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-      <App />
+      
+      {/* ✅ Wrap App with Context */}
+      <AppProvider>
+        <App />
+      </AppProvider>
+
     </GoogleOAuthProvider>
   </StrictMode>
 );

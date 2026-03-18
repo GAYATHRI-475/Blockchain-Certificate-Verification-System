@@ -1,0 +1,125 @@
+/* Page */
+
+.vr-container{
+  padding-left:30px;
+  color:white;
+}
+
+/* Header */
+
+.vr-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.vr-title{
+  font-size:28px;
+  margin-bottom:5px;
+}
+
+.vr-subtitle{
+  color:#aaa;
+}
+
+/* Search */
+
+.vr-search{
+  padding:10px 15px;
+  border-radius:10px;
+  border:1px solid rgba(124,58,237,0.5);
+  background:#111;
+  color:white;
+  width:250px;
+  outline:none;
+}
+
+.vr-search::placeholder{
+  color:#888;
+}
+
+/* Table Container */
+
+.vr-table-container{
+  margin-top:20px;
+  border-radius:16px;
+  border:1px solid rgba(124,58,237,0.4);
+  backdrop-filter:blur(12px);
+
+  height:70vh;
+  overflow-y:auto;
+  overflow-x:auto;
+}
+
+/* Table */
+
+.vr-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+
+/* Header */
+
+.vr-table thead{
+  background:rgba(124,58,237,0.15);
+}
+
+.vr-table thead th{
+  position:sticky;
+  top:0;
+  background:#1d1a3a;
+  z-index:5;
+
+  padding:16px;
+  text-align:left;
+  font-weight:600;
+  border-bottom:1px solid rgba(124,58,237,0.4);
+}
+
+/* Rows */
+
+.vr-table td{
+  padding:15px;
+}
+
+.vr-table tbody tr{
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  transition:all 0.25s ease;
+}
+
+.vr-table tbody tr:hover{
+  background:rgba(124,58,237,0.12);
+}
+
+/* Status */
+
+.vr-status-approved{
+  color:#7CFC9A;
+  font-weight:600;
+}
+
+.vr-status-rejected{
+  color:#ff6b6b;
+  font-weight:600;
+}
+
+.vr-status-pending{
+  color:#ffd166;
+  font-weight:600;
+}
+
+/* No Data */
+
+.vr-no-data{
+  text-align:center;
+  color:#aaa;
+}
+
+/* Loading */
+
+.vr-loading{
+  color:white;
+  padding:30px;
+}

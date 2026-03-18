@@ -26,6 +26,10 @@ const certificateSchema = new mongoose.Schema({
     type: String
   },
 
+  certificateTitle: {
+    type: String
+  },
+
   issueDate: {
     type: String
   },
@@ -46,6 +50,14 @@ const certificateSchema = new mongoose.Schema({
     type: String,
     enum: ["active", "revoked"],
     default: "active"
+  },
+
+  issuerEmail: { 
+    type: String
+  },
+
+  certificateHash: {
+    type: String
   },
 
   ipfsHash: { 

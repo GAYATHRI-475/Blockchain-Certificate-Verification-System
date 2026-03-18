@@ -1,19 +1,191 @@
+// import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import "./IssuerIssued.css";
+
+// export default function IssuerIssued() {
+
+//   const [certificates, setCertificates] = useState([]);
+//   const [search, setSearch] = useState("");
+
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+
+//     const fetchCertificates = async () => {
+
+//       try {
+
+//         const response = await fetch(
+//           "http://localhost:5000/api/certificates/all"
+//         );
+
+//         const result = await response.json();
+
+//         if (result.success) {
+//           setCertificates(result.data);
+//         }
+
+//       } catch (error) {
+//         console.error("Error fetching certificates:", error);
+//       }
+
+//     };
+
+//     fetchCertificates();
+
+//   }, []);
+
+
+//   /* -----------------------------
+//      EDIT CERTIFICATE
+//   ----------------------------- */
+
+//   const handleEdit = (cert) => {
+//     navigate(`/edit/${cert.certId}`);
+//   };
+
+
+//   /* -----------------------------
+//      FILTER CERTIFICATES
+//   ----------------------------- */
+
+//   const filteredCertificates = certificates.filter((cert) => {
+
+//     const searchText = search.toLowerCase();
+
+//     return (
+//       (cert.studentName || "").toLowerCase().includes(searchText) ||
+//       (cert.studentEmail || "").toLowerCase().includes(searchText) ||
+//       (cert.credentialType || "").toLowerCase().includes(searchText) ||
+//       (cert.department || "").toLowerCase().includes(searchText)
+//     );
+
+//   });
+
+
+//   return (
+
+//     <div className="issued-container">
+
+//       <div className="issued-header">
+
+//         <div>
+//           <h1 className="issued-title">Issued Credentials</h1>
+//           <p className="issued-subtitle">
+//             List of all credentials you have issued.
+//           </p>
+//         </div>
+
+//         {/* SEARCH BAR */}
+//         <input
+//           type="text"
+//           placeholder="Search credentials..."
+//           className="search-bar"
+//           value={search}
+//           onChange={(e) => setSearch(e.target.value)}
+//         />
+
+//       </div>
+
+
+//       <div className="table-container">
+
+//         <table className="dark-table">
+
+//           <thead>
+//             <tr>
+//               <th>Name</th>
+//               <th>Email</th>
+//               <th>Credential Type</th>
+//               <th>Department</th>
+//               <th>Issued Date</th>
+//               <th>Status</th>
+//               <th>Action</th>
+//             </tr>
+//           </thead>
+
+//           <tbody>
+
+//             {filteredCertificates.length > 0 ? (
+
+//               filteredCertificates.map((cert) => (
+
+//                 <tr key={cert.certId}>
+
+//                   <td>{cert.studentName}</td>
+
+//                   <td>{cert.studentEmail}</td>
+
+//                   <td>{cert.credentialType}</td>
+
+//                   <td>{cert.department}</td>
+
+//                   <td>
+//                     {new Date(cert.createdAt).toLocaleDateString()}
+//                   </td>
+
+//                   <td>
+//                     <span
+//                       className={
+//                         cert.status === "active"
+//                           ? "status-active"
+//                           : "status-revoked"
+//                       }
+//                     >
+//                       {cert.status}
+//                     </span>
+//                   </td>
+
+//                   <td>
+//                     <button
+//                       className="edit-btn"
+//                       onClick={() => handleEdit(cert)}
+//                     >
+//                       Edit
+//                     </button>
+//                   </td>
+
+//                 </tr>
+
+//               ))
+
+//             ) : (
+
+//               <tr>
+//                 <td colSpan="7" className="no-data">
+//                   No certificates found
+//                 </td>
+//               </tr>
+
+//             )}
+
+//           </tbody>
+
+//         </table>
+
+//       </div>
+
+//     </div>
+
+//   );
+// }
+
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./IssuerIssued.css";
 
 export default function IssuerIssued() {
 
   const [certificates, setCertificates] = useState([]);
+  const [search, setSearch] = useState("");
 
-  /*
-  -----------------------------------
-  FETCH ALL CERTIFICATES
-  -----------------------------------
-  */
+  const navigate = useNavigate();
+
   useEffect(() => {
 
     const fetchCertificates = async () => {
-      try {
 
+      try {
         const response = await fetch(
           "http://localhost:5000/api/certificates/all"
         );
@@ -27,66 +199,151 @@ export default function IssuerIssued() {
       } catch (error) {
         console.error("Error fetching certificates:", error);
       }
+
     };
 
     fetchCertificates();
 
   }, []);
 
-  return (
-    <div style={{ padding: "30px", color: "white" }}>
-      <h1>Issued Credentials</h1>
-      <p>List of all credentials you have issued.</p>
 
-      <div style={{ marginTop: "20px" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          
+  /* -----------------------------
+     EDIT CERTIFICATE
+  ----------------------------- */
+
+  const handleEdit = (cert) => {
+    navigate(`/edit/${cert.certId}`);
+  };
+
+
+  /* -----------------------------
+     FILTER CERTIFICATES
+  ----------------------------- */
+
+  const filteredCertificates = certificates.filter((cert) => {
+    const searchText = search.toLowerCase();
+    return (
+      (cert.studentName || "").toLowerCase().includes(searchText) ||
+      (cert.studentEmail || "").toLowerCase().includes(searchText) ||
+      (cert.credentialType || "").toLowerCase().includes(searchText) ||
+      (cert.department || "").toLowerCase().includes(searchText)
+    );
+  });
+
+
+  return (
+
+    <div className="issued-container">
+
+      <div className="issued-header">
+
+        <div>
+          <h1 className="issued-title">Issued Credentials</h1>
+          <p className="issued-subtitle">
+            List of all credentials you have issued.
+          </p>
+        </div>
+
+        {/* SEARCH BAR */}
+        <input
+          type="text"
+          placeholder="Search credentials..."
+          className="search-bar"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
+      </div>
+
+      <div className="table-container">
+
+        <table className="dark-table">
+
           <thead>
             <tr>
-              <th style={thStyle}>Name</th>
-              <th style={thStyle}>Email</th>
-              <th style={thStyle}>Credential Type</th>
-              <th style={thStyle}>Department</th>
-              <th style={thStyle}>Issued Date</th>
-              <th style={thStyle}>Status</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Credential Type</th>
+              <th>Department</th>
+              <th>Issued Date</th>
+              <th>Status</th>
+              <th>PDF</th>
+              <th>Action</th>
             </tr>
           </thead>
 
           <tbody>
 
-            {certificates.map((cert) => (
-              <tr key={cert.certId}>
-                <td style={tdStyle}>{cert.studentName}</td>
-                <td style={tdStyle}>{cert.studentEmail}</td>
-                <td style={tdStyle}>{cert.credentialType}</td>
-                <td style={tdStyle}>{cert.department}</td>
-                <td style={tdStyle}>{new Date(cert.createdAt).toLocaleDateString()}</td>
-                <td
-                  style={{
-                    ...tdStyle,
-                    color: cert.status === "active" ? "lightgreen" : "red"
-                  }}
-                >
-                  {cert.status}
+            {filteredCertificates.length > 0 ? (
+
+              filteredCertificates.map((cert) => (
+
+                <tr key={cert.certId}>
+
+                  <td>{cert.studentName}</td>
+                  <td>{cert.studentEmail}</td>
+                  <td>{cert.credentialType}</td>
+                  <td>{cert.department}</td>
+                  <td>{new Date(cert.createdAt).toLocaleDateString()}</td>
+
+                  <td>
+                    <span
+                      className={
+                        cert.status === "active"
+                          ? "status-active"
+                          : "status-revoked"
+                      }
+                    >
+                      {cert.status}
+                    </span>
+                  </td>
+
+                  {/* VIEW PDF BUTTON */}
+                  <td>
+                    {cert.certificateFile ? (
+                      <a
+                        href={`http://localhost:5000/${cert.certificateFile}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="view-pdf-btn"
+                      >
+                        View PDF
+                      </a>
+                    ) : (
+                      <span>-</span>
+                    )}
+                  </td>
+
+                  <td>
+                    <button
+                      className="edit-btn"
+                      onClick={() => handleEdit(cert)}
+                    >
+                      Edit
+                    </button>
+                  </td>
+
+                </tr>
+
+              ))
+
+            ) : (
+
+              <tr>
+                <td colSpan="8" className="no-data">
+                  No certificates found
                 </td>
               </tr>
-            ))}
+
+            )}
 
           </tbody>
 
         </table>
+
       </div>
+
     </div>
+
   );
 }
-
-const thStyle = {
-  borderBottom: "1px solid #444",
-  padding: "10px",
-  textAlign: "left",
-};
-
-const tdStyle = {
-  padding: "10px",
-  borderBottom: "1px solid #222",
-};

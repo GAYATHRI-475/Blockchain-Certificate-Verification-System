@@ -9,6 +9,12 @@ import path from "path";
 import authRoutes from "./routes/authRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import certificateRoutes from "./routes/certificateRoutes.js";
+import userAuthRoutes from "./routes/userAuthRoutes.js";
+import userDashboardRoutes from "./routes/userDashboardRoutes.js";
+import issuerRoutes from "./routes/issuerRoutes.js";  
+import issuerRequestRoutes from "./routes/issuerRequestRoutes.js";
+import verifyRoutes from "./routes/verify.js";
+
 
 dotenv.config();
 
@@ -54,6 +60,15 @@ app.use("/api/dashboard", dashboardRoutes);
 
 app.use("/api/certificates", certificateRoutes);
 
+app.use("/api/user-auth", userAuthRoutes);
+
+app.use("/api/user-dashboard", userDashboardRoutes);
+
+app.use("/api/issuers", issuerRoutes);
+
+app.use("/api/issuer", issuerRequestRoutes);
+
+app.use("/api/verify", verifyRoutes);
 
 /*
 -----------------------------------

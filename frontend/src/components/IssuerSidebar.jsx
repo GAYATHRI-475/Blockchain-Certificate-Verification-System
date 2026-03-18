@@ -4,6 +4,7 @@ import "./IssuerSidebar.css";
 import dashboardIcon from "../assets/icons/dashboard.png";
 import issueIcon from "../assets/icons/issue.png";
 import issuedIcon from "../assets/icons/issued.png";
+import requestIcon from "../assets/icons/request.png";
 import logoutIcon from "../assets/icons/logout.png";
 
 export default function IssuerSidebar() {
@@ -45,6 +46,14 @@ export default function IssuerSidebar() {
         >
           <img src={issuedIcon} className="icon-img" alt="issued" />
           Issued Credentials
+        </li>
+
+        <li
+          className={location.pathname.startsWith("/issuer-requests") ? "active" : ""}
+          onClick={() => navigate("/issuer-requests")}
+        >
+          <img src={requestIcon} className="icon-img" alt="requests" />
+          Requests
         </li>
 
         <li

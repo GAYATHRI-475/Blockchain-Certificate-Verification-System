@@ -7,7 +7,7 @@ dotenv.config();
 
 const DB_URI = process.env.MONGO_URI;
 
-mongoose.connect(DB_URI)  // <- remove useNewUrlParser and useUnifiedTopology
+mongoose.connect(DB_URI) 
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log("MongoDB connection error:", err));
 
@@ -17,7 +17,7 @@ const seedData = [
 
 const seedDB = async () => {
   try {
-    await Issuer.deleteMany({}); // optional: clear existing data
+    await Issuer.deleteMany({});
     await Issuer.insertMany(seedData);
     console.log("Data seeded successfully");
   } catch (err) {

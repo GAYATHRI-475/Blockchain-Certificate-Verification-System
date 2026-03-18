@@ -16,6 +16,8 @@ export default function LoginModal({ onClose }) {
         );
 
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("email", res.data.email);
+        localStorage.setItem("name", res.data.name);
 
         onClose();
         navigate("/dashboard");
