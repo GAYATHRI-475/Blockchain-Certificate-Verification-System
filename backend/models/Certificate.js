@@ -48,8 +48,12 @@ const certificateSchema = new mongoose.Schema({
 
   status: {
     type: String,
-    enum: ["active", "revoked"],
-    default: "active"
+    enum: ["pending", "active", "failed", "revoked"],
+    default: "pending"
+  },
+
+  failureReason: {
+    type: String
   },
 
   issuerEmail: { 

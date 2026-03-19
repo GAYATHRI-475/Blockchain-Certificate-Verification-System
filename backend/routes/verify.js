@@ -52,9 +52,18 @@ router.post("/", async (req, res) => {
       ipfsHash: blockchainCert.ipfsHash,
       issuerWallet: blockchainCert.issuerWallet,
       issuedTimestamp: blockchainCert.issuedTimestamp,
+
       studentName: certFromDB?.studentName || "",
-      course: certFromDB?.course || "",
+      studentEmail: certFromDB?.studentEmail || "",
+      department: certFromDB?.department || "",
+      credentialType: certFromDB?.credentialType || "",
+      certificateTitle: certFromDB?.certificateTitle || "",
+      issueDate: certFromDB?.issueDate || "",
+      expiryDate: certFromDB?.expiryDate || "",
       grade: certFromDB?.grade || "",
+      issuerEmail: certFromDB?.issuerEmail || "",
+      certificateFile: certFromDB?.certificateFile || "",
+      status: certFromDB?.status || "active",
     };
 
     console.log("Sending responseData:", responseData);

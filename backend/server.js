@@ -4,7 +4,6 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import path from "path";
 
 import authRoutes from "./routes/authRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
@@ -14,7 +13,7 @@ import userDashboardRoutes from "./routes/userDashboardRoutes.js";
 import issuerRoutes from "./routes/issuerRoutes.js";  
 import issuerRequestRoutes from "./routes/issuerRequestRoutes.js";
 import verifyRoutes from "./routes/verify.js";
-
+import { startCertificateListener } from "./listeners/certificateListener.js";
 
 dotenv.config();
 
@@ -93,6 +92,13 @@ START SERVER
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
+
+app.listen(PORT, async () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+
+  // 🔥 START BLOCKCHAIN LISTENER
+  await startCertificateListener();
 });

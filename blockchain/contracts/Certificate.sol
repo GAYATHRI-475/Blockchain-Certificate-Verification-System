@@ -6,6 +6,7 @@ contract Certificate {
     address public admin;
 
     struct Cert {
+        string certId;
         string certificateHash;
         string ipfsHash;
         address issuerWallet;
@@ -13,14 +14,15 @@ contract Certificate {
         bool exists;
     }
 
-    // Mapping from certificate hash to Cert struct
+    // 🔐 Storage
     mapping(string => Cert) private certificates;
 
-    // Mapping to keep track of authorized issuers
+    // 👥 Authorized issuers
     mapping(address => bool) public authorizedIssuers;
 
-    // Events
+    // 🔥 EVENT (CORE OF SYSTEM)
     event CertificateIssued(
+        string certId,
         string certificateHash,
         string ipfsHash,
         address issuerWallet,
@@ -29,26 +31,22 @@ contract Certificate {
 
     constructor() {
         admin = msg.sender;
-        authorizedIssuers[admin] = true; // Admin is authorized by default
+        authorizedIssuers[admin] = true;
     }
 
-    // Modifier to allow only admin to manage issuers
+    // -------------------------
+    // ADMIN CONTROLS
+    // -------------------------
     modifier onlyAdmin() {
-        require(msg.sender == admin, "Only admin can perform this action");
+        require(msg.sender == admin, "Only admin");
         _;
     }
 
-    // Modifier to allow only authorized wallets to issue certificates
     modifier onlyAuthorized() {
-        require(authorizedIssuers[msg.sender], "Not authorized to issue certificates");
+        require(authorizedIssuers[msg.sender], "Not authorized");
         _;
     }
 
-    /*
-    -----------------------------------
-    ADD/REMOVE ISSUERS
-    -----------------------------------
-    */
     function addIssuer(address _issuer) public onlyAdmin {
         authorizedIssuers[_issuer] = true;
     }
@@ -57,18 +55,19 @@ contract Certificate {
         authorizedIssuers[_issuer] = false;
     }
 
-    /*
-    -----------------------------------
-    ISSUE CERTIFICATE
-    -----------------------------------
-    */
+    // -------------------------
+    // ISSUE CERTIFICATE
+    // -------------------------
     function issueCertificate(
+        string memory certId,
         string memory certificateHash,
         string memory ipfsHash
     ) public onlyAuthorized {
-        require(!certificates[certificateHash].exists, "Certificate already issued");
+
+        require(!certificates[certificateHash].exists, "Already issued");
 
         Cert memory newCert = Cert({
+            certId: certId,
             certificateHash: certificateHash,
             ipfsHash: ipfsHash,
             issuerWallet: msg.sender,
@@ -78,18 +77,23 @@ contract Certificate {
 
         certificates[certificateHash] = newCert;
 
-        emit CertificateIssued(certificateHash, ipfsHash, msg.sender, block.timestamp);
+        emit CertificateIssued(
+            certId,
+            certificateHash,
+            ipfsHash,
+            msg.sender,
+            block.timestamp
+        );
     }
 
-    /*
-    -----------------------------------
-    VERIFY CERTIFICATE BY HASH
-    -----------------------------------
-    */
+    // -------------------------
+    // VERIFY CERTIFICATE
+    // -------------------------
     function verifyCertificate(string memory certificateHash)
         public
         view
         returns (
+            string memory certId,
             string memory ipfsHash,
             address issuerWallet,
             uint256 issuedTimestamp,
@@ -99,10 +103,11 @@ contract Certificate {
         Cert memory cert = certificates[certificateHash];
 
         if (!cert.exists) {
-            return ("", address(0), 0, false);
+            return ("", "", address(0), 0, false);
         }
 
         return (
+            cert.certId,
             cert.ipfsHash,
             cert.issuerWallet,
             cert.issuedTimestamp,
