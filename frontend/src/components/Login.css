@@ -1,5 +1,5 @@
 /* OVERLAY */
-.user-overlay {
+.issuer-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +16,7 @@
 }
 
 /* MODAL */
-.user-modal {
+.issuer-modal {
   width: 320px;
   padding: 30px;
   border-radius: 20px;
@@ -24,46 +24,36 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
 
-  border: 1px solid rgba(124, 58, 237, 0.5); /* ✅ purple */
+  border: 1px solid rgba(124, 58, 237, 0.5);
   box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
 
   text-align: center;
 }
 
 /* TITLE */
-.user-title {
+.issuer-modal h2 {
   background: linear-gradient(to right, #a855f7, #06b6d4);
   -webkit-background-clip: text;
   color: transparent;
-  margin-bottom: 15px;
 }
 
-/* INPUT */
-.user-input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
-  box-sizing: border-box;
+/* TEXT */
+.issuer-modal p {
+  padding-top: 15px;
+  color: #aaa;
+  margin-bottom: 20px;
 }
 
-.user-btn,
-.user-google-btn {
+/* GOOGLE BUTTON */
+.issuer-google-btn {
   width: 100%;
-  margin-top: 13px;
   padding: 12px;
   border-radius: 14px;
 
-  background: rgba(124, 58, 237, 0.15); /* glass */
+  background: rgba(124, 58, 237, 0.15);
   border: 1px solid rgba(124, 58, 237, 0.6);
 
   color: white;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,31 +63,13 @@
   transition: 0.3s;
 }
 
-/* Hover effect */
-.user-btn:hover,
-.user-google-btn:hover {
+.issuer-google-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
 }
 
-/* LINKS */
-.user-link-text {
-  margin-top: 15px;
-  color: #aaa;
-}
-
-.user-link {
-  color: #a855f7;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.user-link:hover {
-  text-decoration: underline;
-}
-
 /* CANCEL */
-.user-cancel-btn {
+.issuer-cancel-btn {
   margin-top: 15px;
   padding: 8px 16px;
 

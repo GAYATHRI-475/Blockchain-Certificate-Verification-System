@@ -1,6 +1,8 @@
+import "./Features.css";
+
 export default function Features() {
   return (
-    <div className="features-section">
+    <div id="features" className="features-section">
       <h2>Core Features</h2>
       <p>
         Built on cutting-edge blockchain technology for ultimate security and
@@ -10,7 +12,7 @@ export default function Features() {
       <div className="features-container">
         {/* CARD 1 */}
         <div className="feature-card">
-          <div className="icon-box">🛡️</div>
+          <div className="icon">🛡️</div>
           <h3>Self-Sovereign Identity</h3>
           <p>
             Complete control over your digital identity without relying on
@@ -20,7 +22,7 @@ export default function Features() {
 
         {/* CARD 2 */}
         <div className="feature-card">
-          <div className="icon-box">🎓</div>
+          <div className="icon">🎓</div>
           <h3>Verifiable Credentials</h3>
           <p>
             Store and share tamper-proof credentials including degrees,
@@ -30,7 +32,7 @@ export default function Features() {
 
         {/* CARD 3 */}
         <div className="feature-card">
-          <div className="icon-box">🔐</div>
+          <div className="icon">🔐</div>
           <h3>Privacy & Zero-Knowledge</h3>
           <p>
             Share proofs without revealing sensitive data using advanced

@@ -1,7 +1,7 @@
 /* HERO SECTION */
 .hero {
   text-align: center;
-  padding-top: 50px; /* space for navbar */
+  padding-top: 70px; /* space for navbar */
 }
 
 .hero h1 {
@@ -15,7 +15,7 @@
 .hero p {
   font-size: 20px;
   color: #aaa;
-  margin-top: -10px;
+  margin-top: 20px;
 }
 
 /* BUTTONS */
@@ -28,7 +28,7 @@
   color: white;
   font-weight: 500;
   cursor: pointer;
-  margin: 10px;
+  margin: 20px;
   transition: all 0.3s ease;
   width: auto;
   text-align: center;

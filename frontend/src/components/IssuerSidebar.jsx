@@ -25,7 +25,7 @@ export default function IssuerSidebar() {
       {/* 🔷 Menu */}
       <ul className="menu">
         <li
-          className={location.pathname.startsWith("/dashboard") ? "active" : ""}
+          className={location.pathname === "/dashboard" ? "active" : ""}
           onClick={() => navigate("/dashboard")}
         >
           <img src={dashboardIcon} className="icon-img" alt="dashboard" />
@@ -33,7 +33,7 @@ export default function IssuerSidebar() {
         </li>
 
         <li
-          className={location.pathname.startsWith("/issue") ? "active" : ""}
+          className={location.pathname === "/issue" ? "active" : ""}
           onClick={() => navigate("/issue")}
         >
           <img src={issueIcon} className="icon-img" alt="issue" />
@@ -41,7 +41,7 @@ export default function IssuerSidebar() {
         </li>
 
         <li
-          className={location.pathname.startsWith("/issued") ? "active" : ""}
+          className={location.pathname === "/issued" ? "active" : ""}
           onClick={() => navigate("/issued")}
         >
           <img src={issuedIcon} className="icon-img" alt="issued" />
@@ -49,7 +49,7 @@ export default function IssuerSidebar() {
         </li>
 
         <li
-          className={location.pathname.startsWith("/issuer-requests") ? "active" : ""}
+          className={location.pathname === "/issuer-requests" ? "active" : ""}
           onClick={() => navigate("/issuer-requests")}
         >
           <img src={requestIcon} className="icon-img" alt="requests" />

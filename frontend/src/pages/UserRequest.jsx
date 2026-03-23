@@ -137,7 +137,7 @@ export default function UserRequest() {
         >
 
           <div>
-            <label>Student Name</label>
+            <label>Student Name <span className="required">*</span></label>
             <input
               type="text"
               name="studentName"
@@ -150,7 +150,7 @@ export default function UserRequest() {
 
 
           <div>
-            <label>Student Email</label>
+            <label>Student Email <span className="required">*</span></label>
             <input
               type="email"
               name="studentEmail"
@@ -163,7 +163,7 @@ export default function UserRequest() {
 
 
           <div>
-            <label>Department</label>
+            <label>Department <span className="required">*</span></label>
             <input
               type="text"
               name="department"
@@ -176,7 +176,7 @@ export default function UserRequest() {
 
 
           <div>
-            <label>Issuer Email</label>
+            <label>Issuer Email <span className="required">*</span></label>
             
             <select
               name="issuerEmail"
@@ -199,7 +199,7 @@ export default function UserRequest() {
 
 
           <div>
-            <label>Credential Type</label>
+            <label>Credential Type <span className="required">*</span></label>
 
             <select
               name="credentialType"
@@ -218,7 +218,7 @@ export default function UserRequest() {
 
 
           <div>
-            <label>Certificate Title</label>
+            <label>Certificate Title <span className="required">*</span></label>
 
             <input
               type="text"
@@ -246,7 +246,7 @@ export default function UserRequest() {
           </div>
 
           <div>
-            <label>Action</label>
+            <label>Action <span className="required">*</span></label>
 
             <select
               name="action"

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./EditCertificate.css";
+import copyIcon from "../assets/icons/copy.png";
+import tickIcon from "../assets/icons/tick.png";
 
 export default function EditCertificate() {
 
   const { certId } = useParams();
   const [certificate, setCertificate] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [copiedField, setCopiedField] = useState("");
 
   useEffect(() => {
 
@@ -38,6 +41,17 @@ export default function EditCertificate() {
       ...certificate,
       status: e.target.value
     });
+  };
+
+  const handleCopy = (value, field) => {
+    if (!value) return;
+
+    navigator.clipboard.writeText(value);
+    setCopiedField(field);
+
+    setTimeout(() => {
+      setCopiedField("");
+    }, 2000);
   };
 
 
@@ -144,15 +158,25 @@ export default function EditCertificate() {
           </div>
 
           <div className="form-group">
-            <label>Status</label>
-            <select
-              name="status"
-              value={certificate.status || "active"}
-              onChange={handleChange}
-            >
-              <option value="active">Active</option>
-              <option value="revoked">Revoked</option>
-            </select>
+            <label>IPFS Hash</label>
+            <input
+              type="text"
+              value={certificate.ipfsHash || "-"}
+              disabled
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Created At</label>
+            <input
+              type="text"
+              value={
+                certificate.createdAt
+                  ? new Date(certificate.createdAt).toLocaleString()
+                  : "-"
+              }
+              disabled
+            />
           </div>
 
           <div className="form-group">
@@ -172,6 +196,40 @@ export default function EditCertificate() {
             )}
           </div>
 
+          <div className="form-group">
+            <label>Certificate Hash</label>
+
+            <div className="input-with-icon">
+              <input
+                type="text"
+                value={certificate.certificateHash || "-"}
+                disabled
+              />
+
+              <div
+                className="icon-box"
+                onClick={() => handleCopy(certificate.certificateHash, "hash")}
+              >
+                <img
+                  src={copiedField === "hash" ? tickIcon : copyIcon}
+                  alt="copy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Status</label>
+            <select
+              name="status"
+              value={certificate.status || "active"}
+              onChange={handleChange}
+            >
+              <option value="active">Active</option>
+              <option value="revoked">Revoked</option>
+            </select>
+          </div>
+
           <div className="edit-actions">
             <button
               type="submit"
@@ -181,6 +239,8 @@ export default function EditCertificate() {
               {loading ? "Updating..." : "Update Status"}
             </button>
           </div>
+
+          
 
         </form>
 

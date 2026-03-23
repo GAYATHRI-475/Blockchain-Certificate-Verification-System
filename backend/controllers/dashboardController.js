@@ -1,4 +1,5 @@
 import Certificate from "../models/Certificate.js";
+import Request from "../models/Request.js";
 
 export const getDashboardStats = async (req, res) => {
   try {
@@ -10,16 +11,15 @@ export const getDashboardStats = async (req, res) => {
       status: "revoked",
     });
 
-    // 🔹 Active recipients (unique emails)
-    const activeRecipients = await Certificate.distinct(
-      "recipientEmail",
-      { status: "active" }
-    );
+    // 🔹 Pending Requests
+    const pendingRequests = await Request.countDocuments({
+      status: "Pending",
+    });
 
     res.status(200).json({
       totalIssued,
       revoked,
-      activeRecipients: activeRecipients.length,
+      pendingRequests,
     });
 
   } catch (err) {

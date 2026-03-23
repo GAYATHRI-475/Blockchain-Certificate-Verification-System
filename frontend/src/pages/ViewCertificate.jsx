@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ViewCertificate.css";
+import copyIcon from "../assets/icons/copy.png";
+import tickIcon from "../assets/icons/tick.png";
 
 export default function ViewCertificate() {
 
   const { certId } = useParams();
   const [certificate, setCertificate] = useState(null);
+  const [copiedField, setCopiedField] = useState("");
 
   useEffect(() => {
 
     const fetchCertificate = async () => {
-
       try {
-
         const response = await fetch(
           `http://localhost:5000/api/certificates/${certId}`
         );
@@ -26,26 +27,25 @@ export default function ViewCertificate() {
       } catch (error) {
         console.error("Error fetching certificate:", error);
       }
-
     };
 
     fetchCertificate();
 
   }, [certId]);
 
+  const handleCopy = (value, field) => {
+    if (!value) return;
 
-  const copyHash = () => {
+    navigator.clipboard.writeText(value);
+    setCopiedField(field);
 
-    if (certificate?.certificateHash) {
-      navigator.clipboard.writeText(certificate.certificateHash);
-      alert("Certificate hash copied!");
-    }
-
+    setTimeout(() => {
+      setCopiedField("");
+    }, 2000);
   };
 
-
   if (!certificate) {
-    return <p className="loading">Loading certificate...</p>;
+    return <p className="view-loading">Loading certificate...</p>;
   }
 
   return (
@@ -56,141 +56,116 @@ export default function ViewCertificate() {
 
         <h2 className="view-title">Certificate Details</h2>
 
-        <div className="view-grid">
+        <div className="view-form">
 
-          <div>
+          <div className="view-group">
             <label>Certificate ID</label>
-            <p>{certificate.certId}</p>
+            <input type="text" value={certificate.certId || "-"} disabled />
           </div>
 
-          <div>
+          <div className="view-group">
             <label>Student Name</label>
-            <p>{certificate.studentName}</p>
+            <input type="text" value={certificate.studentName || ""} disabled />
           </div>
 
-          <div>
+          <div className="view-group">
             <label>Student Email</label>
-            <p>{certificate.studentEmail}</p>
+            <input type="text" value={certificate.studentEmail || ""} disabled />
           </div>
 
-          <div>
+          <div className="view-group">
             <label>Department</label>
-            <p>{certificate.department}</p>
+            <input type="text" value={certificate.department || ""} disabled />
           </div>
 
-          <div>
+          <div className="view-group">
             <label>Credential Type</label>
-            <p>{certificate.credentialType}</p>
+            <input type="text" value={certificate.credentialType || ""} disabled />
           </div>
 
-          <div>
+          <div className="view-group">
             <label>Certificate Title</label>
-            <p>{certificate.certificateTitle}</p>
+            <input type="text" value={certificate.certificateTitle || ""} disabled />
           </div>
 
-          <div>
+          <div className="view-group">
             <label>Issue Date</label>
-            <p>{new Date(certificate.issueDate).toLocaleDateString()}</p>
+            <input type="date" value={certificate.issueDate || ""} disabled />
           </div>
 
-          <div>
+          <div className="view-group">
             <label>Expiry Date</label>
-            <p>{certificate.expiryDate || "-"}</p>
+            <input type="date" value={certificate.expiryDate || ""} disabled />
           </div>
 
-          <div>
+          <div className="view-group">
             <label>Grade</label>
-            <p>{certificate.grade || "-"}</p>
+            <input type="text" value={certificate.grade || ""} disabled />
           </div>
 
-          <div>
+          <div className="view-group">
             <label>Status</label>
-            <p className={certificate.status === "active" ? "status-active" : "status-revoked"}>
-              {certificate.status}
-            </p>
+            <input type="text" value={certificate.status || ""} disabled />
           </div>
 
-        </div>
-
-        {/* IPFS Hash */}
-
-        <div className="hash-section">
-
+          <div className="view-group">
             <label>IPFS Hash</label>
-
-            <div className="hash-box">
-
-                <input
-                    type="text"
-                    value={certificate.ipfsHash || "-"}
-                    readOnly
-                />
-
-                <button
-                    className="copy-btn"
-                    onClick={() => {
-                        navigator.clipboard.writeText(certificate.ipfsHash);
-                        alert("IPFS hash copied!");
-                    }}
-                >
-                    Copy
-                </button>
-
-            </div>
-
-        </div>
-
-        {/* Transaction Hash */}
-
-        <div className="hash-section">
-
-            <label>Blockchain Transaction</label>
-
-            <div className="hash-box">
-
-                <input
-                    type="text"
-                    value={certificate.txHash || "-"}
-                    readOnly
-                />
-
-                <button
-                    className="copy-btn"
-                    onClick={() => {
-                        navigator.clipboard.writeText(certificate.txHash);
-                        alert("Transaction hash copied!");
-                    }}
-                >
-                    Copy
-                </button>
-
-            </div>
-
-        </div>
-
-        {/* Certificate PDF */}
-
-        {certificate.certificateFile && (
-
-          <div className="pdf-section">
-
-            <a
-              href={`http://localhost:5000/${certificate.certificateFile}`}
-              target="_blank"
-              rel="noreferrer"
-              className="pdf-link"
-            >
-              View Certificate PDF
-            </a>
-
+            <input type="text" value={certificate.ipfsHash || "-"} disabled />
           </div>
 
-        )}
+          <div className="view-group">
+            <label>Transaction Hash</label>
+            <input type="text" value={certificate.txHash || "-"} disabled />
+          </div>
+
+          {/* Certificate Hash with Copy */}
+          <div className="view-group">
+            <label>Certificate Hash</label>
+
+            <div className="view-input-icon">
+              <input
+                type="text"
+                value={certificate.certificateHash || "-"}
+                disabled
+              />
+
+              <div
+                className="view-icon-box"
+                onClick={() =>
+                  handleCopy(certificate.certificateHash, "hash")
+                }
+              >
+                <img
+                  src={copiedField === "hash" ? tickIcon : copyIcon}
+                  alt="copy"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* PDF */}
+          <div className="view-group">
+            <label>Certificate File</label>
+
+            {certificate.certificateFile ? (
+              <a
+                href={`http://localhost:5000/${certificate.certificateFile}`}
+                target="_blank"
+                rel="noreferrer"
+                className="view-pdf-link"
+              >
+                View Certificate PDF
+              </a>
+            ) : (
+              <input type="text" value="-" disabled />
+            )}
+          </div>
+
+        </div>
 
       </div>
 
     </div>
 
   );
-
 }

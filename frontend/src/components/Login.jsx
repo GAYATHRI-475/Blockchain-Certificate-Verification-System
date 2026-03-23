@@ -1,6 +1,7 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function LoginModal({ onClose }) {
   const navigate = useNavigate();
@@ -31,13 +32,13 @@ export default function LoginModal({ onClose }) {
   });
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
+    <div className="issuer-overlay">
+      <div className="issuer-modal">
         <h2>Sign in</h2>
         <p>Sign in with Google to access your decentralized identity</p>
 
         {/* ✅ YOUR CUSTOM BUTTON (CSS WILL WORK NOW) */}
-        <button className="google-btn" onClick={() => login()}>
+        <button className="issuer-google-btn" onClick={() => login()}>
           <img
             src="https://www.svgrepo.com/show/475656/google-color.svg"
             alt="google"
@@ -46,7 +47,7 @@ export default function LoginModal({ onClose }) {
           Sign in with Google
         </button>
 
-        <button className="cancel-btn" onClick={onClose}>
+        <button className="issuer-cancel-btn" onClick={onClose}>
           Cancel
         </button>
       </div>

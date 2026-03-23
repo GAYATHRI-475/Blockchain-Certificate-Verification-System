@@ -1,5 +1,4 @@
 /* Page */
-
 .view-container {
   padding: 40px;
   display: flex;
@@ -7,120 +6,109 @@
   color: white;
 }
 
-
 /* Card */
-
 .view-card {
-  width: 700px;
+  width: 720px;
   background: rgba(124, 58, 237, 0.08);
   border: 1px solid rgba(124, 58, 237, 0.5);
   border-radius: 18px;
-  padding: 30px;
+  padding: 35px;
   backdrop-filter: blur(12px);
 }
 
-
 /* Title */
-
 .view-title {
   font-size: 26px;
-  margin-bottom: 25px;
-  text-align: center;
+  margin-bottom: 30px;
   color: #7c3aed;
+  text-align: center;
 }
 
-
-/* Grid */
-
-.view-grid {
+/* Form Layout */
+.view-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 18px 24px;
 }
 
-.view-grid label {
-  font-size: 13px;
-  color: #aaa;
-}
-
-.view-grid p {
-  margin-top: 4px;
-  font-size: 15px;
-}
-
-
-/* Status */
-
-.status-active {
-  color: #7CFC9A;
-  font-weight: 600;
-}
-
-.status-revoked {
-  color: #ff6b6b;
-  font-weight: 600;
-}
-
-
-/* Hash Section */
-
-.hash-section {
-  margin-top: 25px;
-}
-
-.hash-box {
+/* Field */
+.view-group {
   display: flex;
-  gap: 10px;
-  margin-top: 5px;
+  flex-direction: column;
 }
 
-.hash-box input {
-  flex: 1;
-  padding: 10px;
+.view-group label {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+
+/* Inputs */
+.view-group input {
+  width: 85%;
+  padding: 11px 12px;
   border-radius: 10px;
   border: 1px solid rgba(124, 58, 237, 0.5);
   background: rgba(0,0,0,0.25);
   color: white;
+  font-size: 14px;
+  outline: none;
 }
 
+.view-group input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 
-/* Copy Button */
-
-.copy-btn {
-  padding: 10px 16px;
+/* Copy Input */
+.view-input-icon {
+  display: flex;
+  align-items: center;
+  width: 93%;
   border-radius: 10px;
-  border: 1px solid rgba(124, 58, 237, 0.6);
-  background: rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  background: rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  height: 40px;
+}
+
+.view-input-icon input {
+  flex: 1;
+  padding: 11px 12px;
+  border: none;
+  background: transparent;
   color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Copy Icon */
+.view-icon-box {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
-.copy-btn:hover {
-  box-shadow: 0 0 8px rgba(124, 58, 237, 0.4);
+.view-icon-box img {
+  width: 16px;
+  height: 16px;
 }
-
 
 /* PDF Link */
-
-.pdf-section {
-  margin-top: 25px;
-  text-align: center;
-}
-
-.pdf-link {
-  color: #a78bfa;
+.view-pdf-link {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  color: #ddd;
   text-decoration: none;
-  font-weight: 500;
+  display: inline-block;
 }
-
-.pdf-link:hover {
-  text-decoration: underline;
-}
-
 
 /* Loading */
-
-.loading {
+.view-loading {
   padding: 40px;
   text-align: center;
   color: white;

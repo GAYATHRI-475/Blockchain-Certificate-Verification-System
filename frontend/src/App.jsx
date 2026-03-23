@@ -1,51 +1,9 @@
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Navbar from "./components/Navbar";
-// import Hero from "./components/Hero";
-// import Features from "./components/Features";
-// import HowItWorks from "./components/HowItWorks";
-// import IssuerDashBoard from "./pages/IssuerDashBoard";
-// import IssuerIssue from "./pages/IssuerIssue";
-// import IssuerIssued from "./pages/IssuerIssued";
-// import EditCertificate from "./pages/EditCertificate";
-// import IssuerLayout from "./layouts/IssuerLayout";
-
-// function App() {
-//   return (
-//     <Router>
-
-//       <Routes>
-//         {/* Home page route */}
-//         <Route
-//           path="/"
-//           element={
-//             <>
-//               <Navbar />
-//               <Hero />
-//               <Features />
-//               <HowItWorks />
-//             </>
-//           }
-//         />
-
-//         {/* Issuer Dashboard route */}
-//         <Route element={<IssuerLayout />}>
-//           <Route path="/dashboard" element={<IssuerDashBoard />} />
-//           <Route path="/issue" element={<IssuerIssue />} />
-//           <Route path="/issued" element={<IssuerIssued />} />
-//           <Route path="/edit/:certId" element={<EditCertificate />} />
-//         </Route>
-//       </Routes>
-//     </Router>
-//   );
-// }
-
-// export default App;
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
 import HowItWorks from "./components/HowItWorks";
+import Footer from "./components/Footer";
 
 import IssuerDashBoard from "./pages/IssuerDashBoard";
 import IssuerIssue from "./pages/IssuerIssue";
@@ -75,6 +33,7 @@ function App() {
               <Hero />
               <Features />
               <HowItWorks />
+              <Footer/>
             </>
           }
         />

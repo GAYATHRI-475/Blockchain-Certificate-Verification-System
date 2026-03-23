@@ -11,7 +11,7 @@ export default function IssuerDashboard() {
   const [stats, setStats] = useState({
     totalIssued: 0,
     revoked: 0,
-    activeRecipients: 0,
+    pendingRequests: 0,
   });
 
   const [recent, setRecent] = useState([]);
@@ -47,7 +47,7 @@ export default function IssuerDashboard() {
 
       {/* Header */}
       <div className="header">
-        <h1>Welcome back, Test Issuer</h1>
+        <h1>Welcome back, Issuer</h1>
         <p>Ready to issue some amazing credentials today?</p>
       </div>
 
@@ -71,10 +71,10 @@ export default function IssuerDashboard() {
         </div>
 
         <div className="stat-card">
-          <img src={usersIcon} alt="users" />
+          <img src={usersIcon} alt="request" />
           <div className="stat-text">
-            <p>Active Recipients</p>
-            <h2>{stats.activeRecipients}</h2>
+            <p>User Request</p>
+            <h2>{stats.pendingRequests}</h2>
           </div>
         </div>
 

@@ -1,0 +1,55 @@
+.features-section {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.features-section h2 {
+  font-size: 45px;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #a855f7, #06b6d4);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.features-section p {
+  font-size: 20px;
+  color: #aaa;
+  margin-bottom: 50px;
+}
+
+.features-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 25px;
+  width: 280px;
+  text-align: center;
+  border: 1px solid rgba(124, 58, 237, 0.6);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(124, 58, 237, 0.3);
+}
+
+.icon {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  font-size: 16px;
+  color: #bbb;
+}
