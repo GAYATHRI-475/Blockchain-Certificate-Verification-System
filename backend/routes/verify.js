@@ -70,7 +70,10 @@ router.post("/", async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Certificate verified ✅",
+      message:
+        certFromDB?.status === "revoked"
+          ? "Certificate revoked ❌"
+          : "Certificate verified ✅",
       data: responseData,
     });
 

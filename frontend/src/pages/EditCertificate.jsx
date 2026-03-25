@@ -86,7 +86,7 @@ export default function EditCertificate() {
         alert("Failed to update certificate status");
       }
 
-    } catch (error) {
+    } catch (error) {c
 
       console.error("Error updating certificate:", error);
       alert("Error updating certificate status");
@@ -207,7 +207,7 @@ export default function EditCertificate() {
               />
 
               <div
-                className="icon-box"
+                className="edit-icon-box"
                 onClick={() => handleCopy(certificate.certificateHash, "hash")}
               >
                 <img
