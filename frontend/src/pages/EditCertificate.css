@@ -145,6 +145,10 @@
   box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
 }
 
+.form-group canvas {
+  margin-top: 10px;
+}
+
 /* Loading */
 .loading {
   padding: 40px;

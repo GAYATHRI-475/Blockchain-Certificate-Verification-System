@@ -19,6 +19,7 @@ import UserLayout from "./layouts/UserLayout";
 import ViewRequest from "./pages/ViewRequest";
 
 import Verifier from "./pages/Verifier";
+import VerifyByQR from "./pages/VerifyByQR";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
 
         {/* Verifier Page */}
         <Route path="/verify" element={<Verifier />} />
+        <Route path="/verify/:certificateHash" element={<VerifyByQR />} />
 
         <Route path="*" element={<h1>Page Not Found</h1>} />
 

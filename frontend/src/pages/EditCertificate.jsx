@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./EditCertificate.css";
 import copyIcon from "../assets/icons/copy.png";
 import tickIcon from "../assets/icons/tick.png";
+import QRCodeGenerator from "../components/QRCodeGenerator";
 
 export default function EditCertificate() {
 
@@ -216,6 +217,7 @@ export default function EditCertificate() {
                 />
               </div>
             </div>
+            <QRCodeGenerator certificateHash={certificate.certificateHash} />
           </div>
 
           <div className="form-group">

@@ -29,8 +29,17 @@ MIDDLEWARE
 app.use(express.json());
 
 // Enable CORS
+// app.use(cors({
+//   origin: ["http://localhost:3000", "http://localhost:5173"],
+//   credentials: true
+// }));
+
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:5173"],
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://192.168.137.1:5173"
+  ],
   credentials: true
 }));
 

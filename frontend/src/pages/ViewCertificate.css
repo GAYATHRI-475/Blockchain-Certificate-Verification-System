@@ -107,6 +107,10 @@
   display: inline-block;
 }
 
+.view-group canvas {
+  margin-top: 10px;
+}
+
 /* Loading */
 .view-loading {
   padding: 40px;

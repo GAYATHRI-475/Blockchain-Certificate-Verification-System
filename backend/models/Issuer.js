@@ -9,7 +9,10 @@ const issuerSchema = new mongoose.Schema({
     type: String, 
     enum: ["issuer"], 
     default: "issuer" 
-  }
+  },
+
+  collegeName: {type: String}
+  
 });
 
 const Issuer = mongoose.model("Issuer", issuerSchema);

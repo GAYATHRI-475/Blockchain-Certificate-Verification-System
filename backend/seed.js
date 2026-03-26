@@ -12,7 +12,11 @@ mongoose.connect(DB_URI)
   .catch(err => console.log("MongoDB connection error:", err));
 
 const seedData = [
-  { name: "Gayathri", email: "gayathribalu475@gmail.com", role: "issuer" },
+  { name: "Gayathri",
+    email: "gayathribalu475@gmail.com",
+    role: "issuer",
+    collegeName: "Bannari Amman Institute of Technology"
+   },
 ];
 
 const seedDB = async () => {

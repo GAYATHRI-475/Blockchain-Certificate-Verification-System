@@ -24,7 +24,11 @@ export default function Verifier() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/verify", {
+      // const res = await axios.post("http://localhost:5000/api/verify", {
+      //   certificateHash: hash,
+      // });
+
+      const res = await axios.post("http://192.168.137.1:5000/api/verify", {
         certificateHash: hash,
       });
 

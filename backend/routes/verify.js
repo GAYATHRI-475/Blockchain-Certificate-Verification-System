@@ -1,6 +1,6 @@
 import express from "express";
 import { verifyCertificate } from "../utils/blockchain.js";
-import Certificate from "../models/Certificate.js"; // optional MongoDB for extra details
+import Certificate from "../models/Certificate.js";
 
 const router = express.Router();
 
